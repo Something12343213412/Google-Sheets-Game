@@ -1,0 +1,65 @@
+function moveHorizontal(input){
+  changeTile('Sheet1!T2', getTile('Sheet1!T2') + input)
+}
+
+function moveVerticly(input){
+  changeTile('Sheet1!T3', getTile('Sheet1!T3') + input)
+}
+
+// Function user will call to move the character
+function moveRight(){
+  move(1,0)
+}
+function moveLeft(){
+  move(-1,0)
+}
+function moveUp(){
+  move(0,-1)
+}
+function moveDown(){
+  move(0,1)
+}
+
+
+function move(changeX = 1, changeY = 1){
+  // changing the prevouis tile
+  
+  // get's the position of the player, T2 is x, uses base 26 for letter
+  var tilePositionXOld = new base26(parseInt(getTile('Sheet1!T2')))
+  // get's the position of the player on the y axis, uses int
+  var tilePositionYOld = parseInt(getTile('Sheet1!T3'))
+  // 
+  var tilePositionYOldUsed = tilePositionYOld+19
+
+  
+
+  // Debug statement
+  Logger.log('Map Data!' + tilePositionXOld.convertToLetterPlace1()+tilePositionYOldUsed)
+
+  // changing the tile
+  sheet.getRange('Map Data!' + tilePositionXOld.convertToLetterPlace1()+tilePositionYOldUsed).setBackground('#c4c4c4')
+
+
+  // moves to the right 1
+  moveHorizontal(changeX)
+  moveVerticly(changeY)
+
+  var tilePositionX = new base26(parseInt(getTile("Sheet1!T2")))
+  var tilePositionY = (parseInt(getTile("Sheet1!T3"))+19)
+
+  Logger.log(tilePositionX.convertToLetterPlace1())
+
+  // changing the tile
+  sheet.getRange('Map Data!' + tilePositionX.convertToLetterPlace1()+tilePositionY).setBackground("#ed5034")
+
+
+  // showing the map
+  showMap()
+}
+
+function showSidebar() {
+  var html = HtmlService.createHtmlOutputFromFile('Page')
+      .setTitle('My custom sidebar');
+  SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+      .showSidebar(html);
+}

@@ -1,0 +1,23 @@
+// not used yet
+function doDamageP2() {
+  var Damage = ui.prompt("How Much Damage");
+  changeTile(hpLocationP2, getTile(hpLocationP2) - Damage.getResponseText())
+}
+
+// not used yet
+function doDamageP1() {
+  var Damage = ui.prompt("How Much Damage");
+  changeTile(hpLocationP1, getTile(hpLocationP1) - Damage.getResponseText())
+}
+
+// not used yet
+function setHpP1(){
+  var health = ui.prompt("What health")
+  changeTile(hpLocationP1, health.getResponseText())
+}
+
+// not used yet
+function setHpP2(){
+  var health = ui.prompt("What health")
+  changeTile(hpLocationP2, health.getResponseText())
+}

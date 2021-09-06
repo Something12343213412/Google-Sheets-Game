@@ -1,0 +1,23 @@
+function slashAnimation(){
+  changeCurrentState('slash')
+  changeTile('A3', currentState)
+  Utilities.sleep(1000)
+
+
+  var slashAnimation = new Animation(1, 4, 1, new Vector2Sheet(2,2))
+  
+  do{ renderScreen(slashAnimation);}
+  while(slashAnimation.goToNextFrame() == 0);
+
+}
+
+function fireBallAnimation(){
+  changeCurrentState('fireBall')
+  changeTile('A3', currentState)
+  Utilities.sleep(1000)
+  
+  var fireBallAnimation = new Animation(1, 4, 1, new Vector2Sheet(2,90))
+  
+  do{ renderScreen(fireBallAnimation); }
+  while(fireBallAnimation.goToNextFrame() == 0);
+}

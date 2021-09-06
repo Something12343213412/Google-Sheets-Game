@@ -1,0 +1,131 @@
+
+// function to create the trade center
+function tradeCenter(){
+  // A3 is the current state of the program
+  changeTile('Sheet1!A3','tradeCenter')
+
+  createTradeCenterUI()
+
+  var tradeCenter = new Animation(1,4,1, new Vector2Sheet(2,104), 'Animated Places!', 'tradeCenter', true)
+  
+  while (getTile('Sheet1!A3') == 'tradeCenter')
+  {
+    if (!getTile('Sheet1!A3') == 'tradeCenter'){ break }
+    renderScreen(tradeCenter); 
+    if (tradeCenter.currentFrame == tradeCenter.amountOfFrames) 
+      tradeCenter = new Animation(1,4,0, new Vector2Sheet(2,87), 'Animated Places!', 'tradeCenter', true) 
+      Utilities.sleep(100)
+
+      tradeCenter.goToNextFrame()
+  }
+}
+
+
+
+
+
+// This could act as sample code for what a sprite that loops is
+
+// code that creates the magic shop
+function magicShop(){
+  // A3 is the current state of the program
+  changeTile('Sheet1!A3','magicShop')
+
+  // creating animation with range input
+  var magicStore = new Animation(1,3,1, new Vector2Sheet(2,2), 'Animated Places!', 'magicStore', true)
+  
+  // running while loop as long as the state is = to magicshop
+  while (getTile('Sheet1!A3') == 'magicShop')
+  {
+    // uses function renderscreen to draw the magic store
+    renderScreen(magicStore); 
+
+    // looping the animation
+    if (magicStore.currentFrame == magicStore.amountOfFrames) 
+      magicStore = new Animation(1,3,0, new Vector2Sheet(2,-15), 'Animated Places!', 'magicStore', true) 
+      
+      // delay
+      Utilities.sleep(100)
+      if (!getTile('Sheet1!A3') == 'magicShop'){ break }
+
+      // going over to the next frame
+      magicStore.goToNextFrame()
+  }
+}
+
+
+function armory(){
+  // A3 is the current state of the program
+  changeTile('Sheet1!A3','armory')
+
+  var armory = new Animation(1,3,1, new Vector2Sheet(2,53), 'Animated Places!', 'Armory', true)
+  
+  while (getTile('Sheet1!A3') == 'armory')
+  {
+    renderScreen(armory); 
+    if (armory.currentFrame == armory.amountOfFrames) 
+      armory = new Animation(1,3,0, new Vector2Sheet(2,36), 'Animated Places!', 'Armory', true) 
+      
+      Utilities.sleep(100)
+      if (!getTile('Sheet1!A3') == 'armory'){ break }
+
+      armory.goToNextFrame()
+  }
+}
+
+function ceoOffice(){
+  changeCurrentState('ceoOffice')
+
+  changeTile('A3', currentState)
+  // budget solution, paint object to the screen twice get a better one later
+  var ceoOffice = new Animation(1,0,1, new Vector2Sheet(2,19), "Places!", "Ceo Office")
+  
+  renderScreen(ceoOffice)
+  
+  // the sleep is for when the magic shop sleeps or whatever is currently running forever this will take over after the other program has sensed a change in current state
+  Utilities.sleep(1000)
+
+
+  do {renderScreen(ceoOffice);}
+  while (ceoOffice.goToNextFrame() == 0)
+}
+
+function inn(){
+  changeCurrentState('inn')
+
+  changeTile('A3', currentState)
+  // budget solution, paint object to the screen twice get a better one later
+  var inn = new Animation(1,0,1, new Vector2Sheet(2,36), "Places!", "inn")
+  
+  renderScreen(inn)
+  
+  // the sleep is for when the magic shop sleeps or whatever is currently running forever this will take over after the other program has sensed a change in current state
+  Utilities.sleep(1000)
+
+
+  innUi()
+  do {renderScreen(inn);}
+  while (inn.goToNextFrame() == 0)
+}
+
+
+
+
+function cityClocktower(){
+  changeCurrentState('cityClocktower')
+
+  changeTile('A3', currentState)
+
+  var city = new Animation(1,0,1, new Vector2Sheet(2,2), "Places!", "City, ClockTower")
+  renderScreen(city)
+
+  // the sleep is for when the magic shop sleeps or whatever is currently running forever this will take over after the other program has sensed a change in current state
+  Utilities.sleep(1000)
+
+  createCityUI()
+
+  do {renderScreen(city);}
+  while (city.goToNextFrame() == 0)
+}
+
+

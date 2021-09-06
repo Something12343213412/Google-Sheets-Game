@@ -1,0 +1,9 @@
+// Vector 2 class, not used that much, takes in 2 inputs, x and y
+class Vector2Sheet{
+  
+  constructor(positionX, positionY){
+    this.positionX = positionX
+    this.positionY = positionY
+  }
+
+}

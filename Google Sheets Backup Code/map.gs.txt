@@ -1,0 +1,62 @@
+// In renderScreen add the function of what is being called so hide map can call it
+
+
+function showMap(){
+
+  var playerPositionX = new base26(getTile('Sheet1!T2'))
+  //var playerY = getTile('Sheet1!T3')
+  //changeFillColor(playerPositionX.convertToLetter(playerPositionX) + String(playerY), '#fab32f') // the hex value is orange
+
+
+  var colorRange = sheet.getRange('Sheet1!B2:Q17')
+  var usedColor = colorRange.getBackgrounds()
+
+  sheet.getRange('Sheet1!B2'+ ':' + 'Q17').setBackground(usedColor)
+
+  var cell = sheet.getRange('Map Data!' + 'B2' + ':' + 'Q17')
+
+  cell.setBackgrounds(usedColor)
+
+  changeTile('Map Data!A2', getTile('Sheet1!A2'))
+  changeTile('Map Data!A3', getTile('Sheet1!A3'))
+
+
+  changeCurrentState('map')
+  changeTile('Sheet1!A3', 'map')
+
+  // budget solution, paint object to the screen twice get a better one later
+  var map = new Animation(1,0,1, new Vector2Sheet(2,19), "Map Data!", getTile('A3'))
+  
+  renderScreen(map)
+  
+  // the sleep is for when the magic shop sleeps or whatever is currently running forever this will take over after the other program has sensed a change in current state
+  Utilities.sleep(1000)
+
+
+  do {renderScreen(map);}
+  while (map.goToNextFrame() == 0)
+}
+
+// set's everything to black
+function resetMap(){
+  // debug code
+  changeTile('Sheet1!A20', 1)
+
+  // set's the map to black
+  sheet.getRange('Map Data!B19:Q36').setBackground("#000000")
+  // displays map
+  showMap()
+
+}
+
+
+
+
+// fix bug which allows someone to acces the moveInPlace menu while in map mode / disallow someone using hide map while not in map mode
+
+function hideMap(){
+  activateAnimation(getTile('Map Data!A3'))
+  showMap()
+}
+
+

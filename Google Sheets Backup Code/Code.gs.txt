@@ -1,0 +1,93 @@
+var sheet = SpreadsheetApp.getActiveSheet();
+var ui = SpreadsheetApp.getUi();
+
+//
+
+var hpLocationP1 = 'E2'
+var hpLocationP2 = 'F2' 
+var currentState = 'Null'
+
+
+function onOpen() {
+  createUiAnimation()
+  createMapUI()
+
+  // setting x and y
+  changeTile('Sheet1!T2', 0)
+  changeTile('Sheet1!T3', 0)
+
+  SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+      .createMenu('Custom Menu')
+      .addItem('Show sidebar', 'showSidebar')
+      .addToUi();
+}
+
+// checking the player position to activate events
+function checkPlayerPosition(){
+  // getting the position
+  var playerPositionX = getTile('Sheet1!T2')
+
+
+}
+
+
+
+function activateAnimation(animationName){
+  switch(animationName){
+    
+    // animated places first
+
+    case 'magicShop':
+      magicShop()
+      break
+
+    case 'armory':
+      armory()
+      break
+
+    case 'tradeCenter':
+      tradeCenter()
+      break
+
+    case 'inn':
+      inn()
+      break
+
+    case 'cityClocktower':
+      cityClocktower()
+      break
+
+    default:
+      changeTile('Sheet1!A5', animationName)
+  }
+}
+
+
+
+function renderScreen(animation = 0){
+
+  // find a better solution if you want to use more then 1 place value
+  var letterPosition = new base26(animation.currentCell.positionX)
+  var letterPosition2 = new base26(animation.currentCell.positionX + 15) // the number 15 is due to 2 + 15 = 17 so we need to add 15 to account for it
+
+  Logger.log(animation.currentCell.positionX)
+
+  var position = letterPosition.convertToLetter(letterPosition.place1) + animation.currentCell.positionY // Add animationPositionLater
+  var position2 = letterPosition2.convertToLetter(letterPosition2.place1) + (animation.currentCell.positionY + 15) // add animationPositionLater
+
+  Logger.log(position + " | " + position2)
+
+  //Logger.log(position + " " + position2)
+
+  // making name
+  changeTile(animation.sheet + 'A2', animation.placeName)
+
+  var colorRange = sheet.getRange(animation.sheet + position + ':' + position2)
+  var usedColor = colorRange.getBackgrounds()
+
+  sheet.getRange(position + ':' + position2).setBackground(usedColor)
+
+  var cell = sheet.getRange('Sheet1!' + 'B2' + ':' + 'Q17')
+
+  cell.setBackgrounds(usedColor)
+}

@@ -1,0 +1,86 @@
+function createUiHealth(){
+
+  ui.createMenu('Actions')
+
+    // Health Menu
+    .addSubMenu(ui.createMenu('Health')
+      .addSubMenu(ui.createMenu('Set Hp')
+      .addItem('Set hp P1', 'setHpP1')
+      .addItem('Set hp P2', 'setHpP2'))
+
+    // Do Damage
+    .addSubMenu(ui.createMenu('Do Damage')
+      .addItem('Do Damage P1', 'doDamageP1')
+      //.addSeparator()
+      .addItem('Do Damage P2', 'doDamageP2')))
+    
+    .addToUi()
+}
+
+
+/*
+function createUiAnimation(){
+
+  ui.createMenu('Animation')
+    .addSubMenu(ui.createMenu('Places')
+      .addSubMenu(ui.createMenu('StaticPlaces')
+        .addItem('City Clock Tower', 'cityPicture'))
+      .addSubMenu(ui.createMenu('LoopedPlaces')
+        .addItem('Magic Shop', 'magicShop')
+        .addItem('Armory', 'armory')))
+
+    .addSubMenu(ui.createMenu('Animations')
+      .addItem('Slash Animation', 'slashAnimation')
+      .addItem('FireBall Animation', 'fireBallAnimation'))
+
+
+    .addToUi()
+}
+*/
+
+// remove show map ui from this later
+
+function createUiAnimation(){
+
+  ui.createMenu('Animation')
+    .addSubMenu(ui.createMenu('Places')
+      .addItem('City Clock Tower', 'cityClocktower'))
+      .addItem('ShowMap', 'showMap')
+
+    .addSubMenu(ui.createMenu('Animations')
+      .addItem('Slash Animation', 'slashAnimation')
+      .addItem('FireBall Animation', 'fireBallAnimation'))
+
+
+    .addToUi()
+}
+
+function innUi(){
+  ui.createMenu('Move Around In Place')
+    .addItem('Sleep', 'sleep')
+    .addToUi()
+}
+
+function createCityUI(){
+  ui.createMenu('Move Around In Place')
+    .addItem('Magic Shop', 'magicShop')
+    .addItem('Armory', 'armory')
+    .addItem('Inn', 'inn')
+    .addItem('Trade Center', 'tradeCenter')
+    .addToUi()
+}
+
+function createTradeCenterUI(){
+  ui.createMenu('Move Around In Place')
+    .addItem('Ceo Office', 'ceoOffice')
+    .addToUi()
+}
+
+
+function createMapUI(){
+  ui.createMenu('Map')
+    .addItem('Show Map', 'showMap')
+    .addItem('Hide Map', 'hideMap')
+    .addItem('Reset Map', 'resetMap')
+    .addToUi()
+}

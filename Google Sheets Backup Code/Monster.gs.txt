@@ -1,0 +1,97 @@
+// Code for monster / enemies
+
+// basic monster class
+class Monster{
+
+  // - 1 is the error value
+
+  // constructor for the monster, takes in the sheet it is in, the dataPosition in base26 form, and the y position of the data
+  constructor(dataPositionSheet = 'Monster Data!', dataPositionX = new base26(6), dataPositionY = 2, healthPlace = 0, attackPointer = 0, attack = 0, defensePointer = 0, defense = 0, movePointer = 0, moves = [0]){
+  
+    // setting the position of the data
+    this.dataPositionSheet = dataPositionSheet
+    this.dataPositionX = dataPositionX
+    this.dataPositionY = dataPositionY
+
+    // setting the name of the monster
+    this.name = getTile(dataPositionSheet + dataPositionX.convertToLetterPlace1() + dataPositionY)
+
+    // setting hp of the monster
+
+    // getting the position of the monster name, in the sheet health is 1 over to the right so we will add 1 to the place1
+    this.healthPlace = dataPositionX
+
+    // grabbing the information and adding 1 to the x
+    this.health = getTile(dataPositionSheet + this.healthPlace.convertToLetter(++this.healthPlace.place1) + dataPositionY)
+
+    // setting the defense of the monster
+    
+    // getting position of health, moving over 1 would get defense
+    this.defensePointer = this.healthPlace
+
+    // grabbing the information and addind 1 to x
+    this.defense = getTile(dataPositionSheet + this.defensePointer.convertToLetter(++this.defensePointer.place1) + dataPositionY)
+
+    // setting the attack of the monster
+
+    // getting the position of the defense, going to have to move the x 1 over the right
+    this.attackPointer = this.defensePointer
+    
+    // grabbing the information and adding 1 to x
+    this.attack = getTile(dataPositionSheet + this.healthPlace.convertToLetter(++this.attackPointer.place1) + dataPositionY)
+
+    
+    // setting the moves of the monster
+    
+    // getting the position of attack, going to have to move x 1 to the right
+    this.movePointer = this.attackPointer
+
+
+    
+    // grabbing the information and adding 1 to x
+    this.moves = getTile(dataPositionSheet + this.movePointer.convertToLetter(++this.movePointer.place1) + dataPositionY).split(',')
+    Logger.log(this.moves)
+
+  }
+  
+  // getter function, name
+  getName(){
+    // returns name from the object
+    return this.name
+  }
+
+  // getter function, hp
+  getHp(){
+    return this.health
+  }
+
+  // getter function defense
+  getDefense(){
+    return this.defense
+  }
+
+  // getter function, attack
+  getAttack(){
+    return this.attack
+  }
+
+  // getter function, moves
+
+
+
+  // returns the data position of the object
+  dataPosition(){
+    // returns the data position of the object
+    return this.dataPosition
+  }
+  
+
+}
+
+// debug function
+function testFunction(){
+  // creating a monster
+  var a = new Monster()
+  // logging the resault
+  Logger.log(a.getName())
+}

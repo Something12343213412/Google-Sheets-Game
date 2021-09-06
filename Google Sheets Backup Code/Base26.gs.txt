@@ -1,0 +1,52 @@
+class base26{
+  constructor(place1, place2 = 0, place3 = 0, place4 = 0){
+
+    this.place1 = place1
+    this.place2 = place2
+    this.place3 = place3
+    this.place4 = place4
+
+    this.wholeText = 0
+
+  }
+
+  convertToLetter(place){
+    // Adding offset to place to get it to the correct letter
+    return String.fromCharCode(place + 64)
+  }
+
+  convertToLetterPlace1(){
+    //converts to letter from only the first place value
+    return String.fromCharCode(this.place1 + 64)
+  }
+
+  convertWholeText(){
+    this.wholeText =
+        this.convertToLetter(this.place1)
+      + this.convertToLetter(this.place2) 
+      + this.convertToLetter(this.place3) 
+      + this.convertToLetter(this.place4)
+  }
+
+  numberToBase26(n){
+
+    digits = ""
+
+    while (n > 0){
+      digits += String(n%26)
+      n = Math.floor(n/26) 
+    }
+
+    if (digits.length > 0) { this.place1 = digits.charAt(0) }
+
+    if (digits.length > 1) { this.place2 = digits.charAt(1) }
+
+    if (digits.length > 2) { this.place3 = digits.charAt(2) }
+
+    if (digits.length > 3) { this.place4 = digits.charAt(3) }
+  }
+
+
+}
+
+

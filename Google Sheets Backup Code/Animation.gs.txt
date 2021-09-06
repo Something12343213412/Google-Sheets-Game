@@ -1,0 +1,30 @@
+class Animation{
+  
+  // Use a Vector2 as the last input
+  constructor(startingFrame, amountOfFrames, currentFrame, startingPosition, sheet = "Animations!", placeName = 'placeHolder', repeat = false){
+    
+    this.currentFrame = currentFrame
+    
+    this.startingCell = startingPosition
+    this.currentCell = startingPosition
+    
+    this.amountOfFrames = amountOfFrames
+    this.startingFrame = startingFrame
+    this.sheet = sheet
+    this.placeName = placeName
+    this.repeat = repeat
+
+  }
+
+  goToNextFrame(){
+    
+    Logger.log(this.currentFrame + " | " + this.amountOfFrames)
+    if (this.currentFrame <= this.amountOfFrames){
+      this.currentCell.positionY += 17
+      this.currentFrame += 1
+      return 0
+    }
+
+    return 1
+  }
+}

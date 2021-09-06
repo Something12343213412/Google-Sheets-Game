@@ -1,0 +1,7 @@
+Movement <input type="button" value="Left" onclick= "google.script.run.moveLeft()" />
+         <input type="button" value="Right" onclick= "google.script.run.moveRight()" />
+         <input type="button" value="Up" onclick= "google.script.run.moveUp()" />
+         <input type="button" value="Down" onclick= "google.script.run.moveDown()" />
+Map      <input type="button" value="ShowMap" onclick="google.script.run.showMap()">
+         <input type="button" value="HideMap" onclick="google.script.run.hideMap()">
+         <input type="button" value="ResetMap" onclick="googe.script.run.resetMap()">

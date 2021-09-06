@@ -1,0 +1,25 @@
+// changes 
+function sleep(){
+  changeCurrentState('sleep')
+
+  changeTile('A3', currentState)
+  // budget solution, paint object to the screen twice get a better one later
+  var sleep = new Animation(1,0,1, new Vector2Sheet(2,53), "Places!", "sleep")
+  
+  renderScreen(sleep)
+  
+  // the sleep is for when the magic shop sleeps or whatever is currently running forever this will take over after the other program has sensed a change in current state
+  Utilities.sleep(1000)
+
+  // rendering the black screen from sleep, do is a while loop that checks the condition after the code has been ran
+  do {renderScreen(sleep);}
+  while (sleep.goToNextFrame() == 0)
+
+  Utilities.sleep(5000)
+  inn()
+}
+
+// test function not needed  
+function testFunction(){
+  return 1
+}

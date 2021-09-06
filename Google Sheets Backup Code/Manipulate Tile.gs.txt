@@ -1,0 +1,29 @@
+// changes the tile, takes in position as a range and takes in value to whatever will be put into the cell
+function changeTile(position, value){
+  sheet.getRange(position).setValue(String(value));
+}
+
+// get's the data from the selected tile, I think it always returns string
+function getTile(position){
+  return sheet.getRange(position).getValue()
+}
+
+// get's the fill color of the tile, I think it get's it in hex but not 100% sure
+function getTileFillColor(position){
+  return sheet.getRange(position).getBackground()
+}
+
+// input color as a hexadecimal
+function changeFillColor(position, color){
+  sheet.getRange(position).setBackground(color)
+}
+
+// This function is unused
+function changeCurrentState(input){
+  currentState = input
+}
+
+// this function is unused
+function getCurrentState(){
+  return currentState
+}
